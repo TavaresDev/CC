@@ -1,0 +1,66 @@
+﻿@model IEnumerable<CannabisChoice.Models.StrainInfo>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Sname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Thc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cbd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Terpenes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pic)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Effects)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Thc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cbd)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terpenes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pic)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Effects)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.StrainId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.StrainId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.StrainId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
