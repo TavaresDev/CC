@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CannabisChoice.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CannabisChoice.Controllers
 {
+    //Change to only allow user to acces his own Review
+    [Authorize(Roles = "Administrator, User")]
     public class ReviewsController : Controller
     {
         private readonly CCContext _context;
@@ -17,7 +20,8 @@ namespace CannabisChoice.Controllers
         {
             _context = context;
         }
-
+        //can see but not interact
+        [AllowAnonymous]
         // GET: Reviews
         public async Task<IActionResult> Index()
         {

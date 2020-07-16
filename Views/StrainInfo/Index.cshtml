@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<CannabisChoice.Models.StrainInfo>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Strain Information";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -9,66 +9,79 @@
 
 @if (User.Identity.IsAuthenticated)
 {
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+    <p>
+        <a asp-action="Create">Add New Strain</a>
+    </p>
 }
 
-<table class="table">
+<table class="table table-striped table-hover sortable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Sname)
+                <a href="#">
+                    @Html.DisplayNameFor(model => model.Sname)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Thc)
+                <a href="#">
+                    @Html.DisplayNameFor(model => model.Thc)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cbd)
+                <a href="#">
+                    @Html.DisplayNameFor(model => model.Cbd)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Terpenes)
+                <a href="#">
+                    @Html.DisplayNameFor(model => model.Terpenes)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Pic)
+                <a href="#">
+                    @Html.DisplayNameFor(model => model.Pic)
+                </a>
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Effects)
+                <a href="#">
+                    @Html.DisplayNameFor(model => model.Effects)
+                </a>
             </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Thc)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cbd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Terpenes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pic)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Effects)
-            </td>
-            @if (User.Identity.IsAuthenticated)
-            {
+        @foreach (var item in Model)
+        {
+            <tr>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.StrainId">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.StrainId">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.StrainId">Delete</a>
+                    @Html.DisplayFor(modelItem => item.Sname)
                 </td>
-            }
+                <td>
+                    @Html.DisplayFor(modelItem => item.Thc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cbd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Terpenes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pic)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Effects)
+                </td>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.StrainId">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.StrainId">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.StrainId">Delete</a>
+                    </td>
+                }
 
-        </tr>
-}
+            </tr>
+        }
     </tbody>
 </table>

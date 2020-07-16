@@ -50,22 +50,28 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
+        <main role="main" class="pb-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            <p>&copy; 2020 - CannabisChoice </p>
-            <p>Develped By <a href="https://www.andretavares.dev/" target="_blank">André Tavares</a> # 200418428</p>
-            <p>Server-Side Scripting-ASP.NET - 03, COMP2084-20S-30814 </p> 
-            @* &copy; 2020 - CannabisChoice - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+    <footer class="border-top footer mt-3">
+
+        <div class="container text-muted text-center">
+        <p>
+            &copy; 2020 - CannabisChoice -
+            Develped By <a href="https://www.andretavares.dev/" target="_blank">André Tavares</a> # 200418428
+        </p>
+        <p>Server-Side Scripting-ASP.NET - 03, COMP2084-20S-30814 </p>
+        @* &copy; 2020 - CannabisChoice - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>*@
+
         </div>
+
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/sorttable.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
