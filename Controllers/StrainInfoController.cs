@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using CannabisChoice.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CannabisChoice.Controllers
 {
+    [Authorize(Roles = "Administrator")]
     public class StrainInfoController : Controller
     {
         private readonly CCContext _context;
@@ -19,6 +21,8 @@ namespace CannabisChoice.Controllers
         }
 
         // GET: StrainInfo
+        //can see but not interact
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             return View(await _context.StrainInfo.ToListAsync());
