@@ -31,8 +31,20 @@ namespace CannabisChoice
             services.AddDbContext<CCContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-                .AddEntityFrameworkStores<CCContext>();
+            //configure identity to work with out dbase
+            //Use our new applicationROle class to manange Roles and permissions
+            //Point identity to the existing GeorgianComputers DBase context Class
+            //use default cookie settings
+            services.AddIdentity<ApplicationUser, ApplicationRole>()
+                .AddDefaultUI()
+                .AddRoles<ApplicationRole>()
+                .AddRoleManager<RoleManager<ApplicationRole>>()
+                .AddEntityFrameworkStores<CCContext>()
+                .AddDefaultTokenProviders();
+
+
+            //            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+            //                .AddEntityFrameworkStores<CCContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

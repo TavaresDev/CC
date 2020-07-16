@@ -1,10 +1,11 @@
 ﻿using System;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace CannabisChoice.Models
 {
-    public partial class CCContext : DbContext
+    public partial class CCContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
         public CCContext()
         {
@@ -23,13 +24,16 @@ namespace CannabisChoice.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=ANDREDELL\\SQLSERVER2019;Initial Catalog=CC;Integrated Security=True");
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+//                optionsBuilder.UseSqlServer("Data Source=ANDREDELL\\SQLSERVER2019;Initial Catalog=CC;Integrated Security=True");
             }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //Add to get identity to work, just a bug fix 
+            base.OnModelCreating(modelBuilder);
+
             modelBuilder.Entity<Review>(entity =>
             {
                 entity.HasOne(d => d.Strain)
