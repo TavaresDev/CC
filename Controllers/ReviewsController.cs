@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 namespace CannabisChoice.Controllers
 {
     //Change to only allow user to acces his own Review
-    [Authorize(Roles = "Administrator, User")]
+    [Authorize(Roles = "Administrator, Customer")]
     public class ReviewsController : Controller
     {
         private readonly CCContext _context;
